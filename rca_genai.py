@@ -120,25 +120,25 @@ user_input = st.text_input('Your question or RCA request:')
 if st.button('Ask') and user_input:
     # For RCA, use all alarms+logs as context (could be improved)
     context = ''
-    # if alarms is not None and not alarms.empty:
-    #     #context += alarms.tail(10).to_string(index=False) + '\n'
-    #     context += alarms.to_string(index=False) + '\n'
-    # if logs is not None and not logs.empty:
-    #     # context += logs.tail(10).to_string(index=False) + '\n'
-    #     context += logs.to_string(index=False) + '\n'
-
-
     if alarms is not None and not alarms.empty:
-        filtered_alarms = filter_by_time(alarms, start_datetime, end_datetime)
-        if not filtered_alarms.empty:
-            context += filtered_alarms.to_string(index=False) + '\n'
-
-    print(f"Context after filtering alarms: {len(context)} ")
-
+        context += alarms.tail(10).to_string(index=False) + '\n'
+        #context += alarms.to_string(index=False) + '\n'
     if logs is not None and not logs.empty:
-        filtered_logs = filter_by_time(logs, start_datetime, end_datetime)
-        if not filtered_logs.empty:
-            context += filtered_logs.to_string(index=False) + '\n'
+        context += logs.tail(10).to_string(index=False) + '\n'
+        #context += logs.to_string(index=False) + '\n'
+
+
+    # if alarms is not None and not alarms.empty:
+    #     filtered_alarms = filter_by_time(alarms, start_datetime, end_datetime)
+    #     if not filtered_alarms.empty:
+    #         context += filtered_alarms.to_string(index=False) + '\n'
+
+    # print(f"Context after filtering alarms: {len(context)} ")
+
+    # if logs is not None and not logs.empty:
+    #     filtered_logs = filter_by_time(logs, start_datetime, end_datetime)
+    #     if not filtered_logs.empty:
+    #         context += filtered_logs.to_string(index=False) + '\n'
 
     print(f"Context after filtering logs: {len(context)}")
 

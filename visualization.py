@@ -34,7 +34,7 @@ def plot_metric_with_anomalies(df, metric, vis_type, threahold=3):
     ax.set_ylabel("Normalized Value")
     ax.legend()
     ax.grid(True)
-    
+
     st.pyplot(fig)
 
 # Streamlit App

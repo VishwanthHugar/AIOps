@@ -84,6 +84,6 @@ class FeatureImportanceETL:
         self.load(ranked_features)
         print("[ETL] Done.")
 
-if __name__ == "__main__":
-    etl = FeatureImportanceETL(input_folder="output_data", output_file="feature_ranking.csv")
-    etl.run()
+# if __name__ == "__main__":
+#     etl = FeatureImportanceETL(input_folder="output_data", output_file="feature_ranking.csv")
+#     etl.run()

@@ -1,109 +1,137 @@
-import pandas as pd
-import numpy as np
-from sklearn.ensemble import IsolationForest
-from datetime import datetime
 import os
 import glob
+import joblib
+import numpy as np
+import pandas as pd
+from sklearn.ensemble import IsolationForest
 
-# Simple time-series anomaly detection for telecom KPIs
 
-def detect_anomalies_in_kpis(kpi_csv, output_csv=None, contamination=0.05):
-    """
-    Detect anomalies in the KPI time-series data using Isolation Forest.
-    Adds an 'anomaly' column to the output CSV (1=anomaly, 0=normal).
-    """
-    if not os.path.exists(kpi_csv):
-        raise FileNotFoundError(f"KPI CSV not found: {kpi_csv}")
-    
-    df = pd.read_csv(kpi_csv)
-    # Select numeric columns for anomaly detection
-    features = ['latency_ms', 'throughput_mbps', 'packet_loss_percent', 'jitter_ms', 'rtt_ms',
-                'call_setup_success_rate', 'data_session_success_rate', 'handover_success_rate', 'call_drop_rate',
-                'cpu_utilization_percent', 'memory_utilization_percent', 'bandwidth_utilization_percent', 'disk_utilization_percent']
-    feature_cols = [col for col in features if col in df.columns]
-    df_features = df[feature_cols].fillna(0)
-
-    # Fit Isolation Forest
-    model = IsolationForest(contamination=contamination, random_state=42)
-    df['anomaly'] = model.fit_predict(df_features)
-    # IsolationForest: -1=anomaly, 1=normal. Convert to 1/0
-    df['anomaly'] = (df['anomaly'] == -1).astype(int)
-
-    # Save or return
-    if output_csv:
-        df.to_csv(output_csv, index=False)
-        print(f"Anomaly detection results saved to {output_csv}")
-    return df
-
+# ------------------------------
+# Helper: load top features
+# ------------------------------
 def get_top_features(feature_ranking_csv, top_n=7):
-    df_features = pd.read_csv(feature_ranking_csv)
-    return df_features['feature'].head(top_n).tolist()
+    df = pd.read_csv(feature_ranking_csv)
+    return df['feature'].head(top_n).tolist()
 
-def detect_time_series_anomalies_on_top_features_all_runs(base_dir, feature_ranking_csv, output_csv=None, window_size=50, contamination=0.05, top_n=7):
+
+# ------------------------------
+# TRAINING - single model only
+# ------------------------------
+def train_time_series_anomaly_model(
+    base_dir,
+    feature_ranking_csv,
+    model_path,
+    contamination=0.05,
+    top_n=7
+):
     """
-    Detect time series anomalies on top N features extracted from feature importance
-    across all KPI CSV files in all run folders.
+    Train a single IsolationForest model on top N features from all KPI CSVs in base_dir.
+    Saves model and feature list to disk.
     """
-    # Find all KPI CSV files
+    # Load all KPI data
     kpi_files = glob.glob(os.path.join(base_dir, "run_*", "kpis.csv"))
     if not kpi_files:
         raise FileNotFoundError("No kpis.csv files found in run folders.")
-    
-    # Load all KPI files and concatenate
-    dfs = []
-    for f in kpi_files:
-        df = pd.read_csv(f)
-        dfs.append(df)
-    df_all = pd.concat(dfs, ignore_index=True)
-    
-    if 'timestamp' not in df_all.columns:
-        raise KeyError("Timestamp column missing in KPI data.")
-    
-    df_all['timestamp'] = pd.to_datetime(df_all['timestamp'])
-    df_all.sort_values('timestamp', inplace=True)
-    df_all.reset_index(drop=True, inplace=True)
-    
-    # Get top features
-    top_features = get_top_features(feature_ranking_csv, top_n=top_n)
-    print(f"Using top {top_n} features for anomaly detection: {top_features}")
 
-    # Filter columns by top features, drop rows with missing values on these features
+    dfs = [pd.read_csv(f) for f in kpi_files]
+    df_all = pd.concat(dfs, ignore_index=True)
+
+    if "timestamp" not in df_all.columns:
+        raise KeyError("Timestamp column missing in KPI data.")
+
+    df_all["timestamp"] = pd.to_datetime(df_all["timestamp"])
+    df_all.sort_values("timestamp", inplace=True)
+    df_all.reset_index(drop=True, inplace=True)
+
+    # Select top features
+    top_features = get_top_features(feature_ranking_csv, top_n=top_n)
     feature_cols = [col for col in top_features if col in df_all.columns]
     df_features = df_all[feature_cols].fillna(method='ffill').fillna(method='bfill').fillna(0)
 
-    anomaly_scores = np.zeros(len(df_all))
+    # Train single model
+    model = IsolationForest(contamination=contamination, random_state=42)
+    model.fit(df_features)
 
-    # Rolling window anomaly detection
-    for start in range(0, len(df_all) - window_size + 1):
-        window_data = df_features.iloc[start:start + window_size]
-        model = IsolationForest(contamination=contamination, random_state=42)
-        model.fit(window_data)
-        scores = model.decision_function(window_data)  # Higher is normal, lower is anomaly
+    # Save model + metadata
+    joblib.dump({
+        "mode": "single",
+        "model": model,
+        "feature_cols": feature_cols,
+        "contamination": contamination
+    }, model_path)
 
-        # Assign anomaly scores: keep minimum score if overlapping windows
-        for i, idx in enumerate(range(start, start + window_size)):
-            if anomaly_scores[idx] == 0:
-                anomaly_scores[idx] = scores[i]
-            else:
-                anomaly_scores[idx] = min(anomaly_scores[idx], scores[i])
+    print(f"Saved single IsolationForest model to {model_path}")
+    return model_path
 
-    # Threshold: median score (adjustable)
-    threshold = np.median(anomaly_scores)
-    df_all['anomaly'] = (anomaly_scores < threshold).astype(int)
+
+# ------------------------------
+# INFERENCE - single model only
+# ------------------------------
+def detect_anomalies_with_trained_model(
+    kpi_csv_path,
+    model_path,
+    output_csv=None
+):
+    """
+    Detect anomalies in a KPI CSV using a saved single IsolationForest model.
+    """
+    if not os.path.exists(kpi_csv_path):
+        raise FileNotFoundError(f"KPI CSV not found: {kpi_csv_path}")
+
+    saved = joblib.load(model_path)
+    if saved.get("mode") != "single":
+        raise ValueError("The saved model is not in 'single' mode.")
+
+    model = saved["model"]
+    feature_cols = saved["feature_cols"]
+
+    df = pd.read_csv(kpi_csv_path)
+    if "timestamp" not in df.columns:
+        raise KeyError("Timestamp column missing in KPI data.")
+
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+    df.sort_values("timestamp", inplace=True)
+    df.reset_index(drop=True, inplace=True)
+
+    # Features for prediction
+    df_features = df[feature_cols].fillna(method='ffill').fillna(method='bfill').fillna(0)
+
+    # Get scores and classify anomalies
+    scores = model.decision_function(df_features)
+    threshold = np.median(scores)
+    df["anomaly"] = (scores < threshold).astype(int)
 
     if output_csv:
-        df_all.to_csv(output_csv, index=False)
+        df.to_csv(output_csv, index=False)
         print(f"Anomaly detection results saved to {output_csv}")
 
-    return df_all
+    return df
 
 
-if __name__ == "__main__":
-    base_dir = "output_data"
-    feature_ranking_csv = os.path.join(os.getcwd(), "feature_ranking.csv")
-    output_csv = os.path.join(base_dir, "all_runs_kpis_top_features_time_series_anomalies.csv")
+# # ------------------------------
+# # Example usage
+# # ------------------------------
+# if __name__ == "__main__":
+#     data_dir = "output_data"               # Where run_* folders live
+#     model_dir = "model"
+#     os.makedirs(model_dir, exist_ok=True)
 
-    detect_time_series_anomalies_on_top_features_all_runs(
-        base_dir, feature_ranking_csv, output_csv,
-        window_size=50, contamination=0.05, top_n=7
-    )
+#     feature_ranking_csv = "feature_ranking.csv"
+#     model_path = os.path.join(model_dir, "iforest_single.pkl")
+#     output_csv = os.path.join(data_dir, "inference_results.csv")
+
+#     # Train
+#     train_time_series_anomaly_model(
+#         base_dir=data_dir,
+#         feature_ranking_csv=feature_ranking_csv,
+#         model_path=model_path,
+#         contamination=0.05,
+#         top_n=7
+#     )
+
+#     # Inference
+#     detect_anomalies_with_trained_model(
+#         kpi_csv_path=os.path.join(data_dir, "run_001", "kpis.csv"),
+#         model_path=model_path,
+#         output_csv=output_csv
+#     )

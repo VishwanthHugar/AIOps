@@ -82,3 +82,16 @@ ollama serve
 ## To run end to end
 streamlit run main.py
 
+
+## To train the model
+python main.py infer \
+    --kpi-csv output_data/run_001/kpis.csv \
+    --model-dir model \
+    --output-csv results_run001.csv
+
+
+## To inference
+python  train_inference.py train \
+	--data-dir output_data \
+	--feature-ranking-csv feature_ranking.csv 
+	--model-dir model
