@@ -75,61 +75,61 @@ It supports:
 
 ---
 
-## File Structure
-
+## Setting up project
+```bash
 git clone https://github.com/yourusername/aiops-telecom-kpi.git
 cd aiops-telecom-kpi
 pip install -r requirements.txt
 install ollama, llama3.2:1b, prometheus, prometheus client, Grafana 
-
+```
 ---
 
 ## Prometheus configure
-
+```bash
 Add the job in the prometheus.yml
   - job_name: 'pushgateway'
     static_configs:
       - targets: ['localhost:9091']
 
 ./prometheus --config.file=prometheus.yml
-
+```
 ---
 ## Start the pushgateway
-
+```bash
 ./pushgateway --web.listen-address=":9091"
-
+```
 ---
 ## Start the Grafana for visualization realtime
-
+```bash
 /usr/sbin/grafana-server --homepath=/usr/share/grafana
-
+```
 
 ---
 ## Start the ollama for RCA
-
+```bash
 ollama serve
-
+```
 ---
 
 ## To train the model
-
+```bash
 python main.py infer \
     --kpi-csv output_data/run_001/kpis.csv \
     --model-dir model \
     --output-csv results_run001.csv
-
+```
 ---
 
 ## To inference
-
+```bash
 python  train_inference.py train \
 	--data-dir output_data \
 	--feature-ranking-csv feature_ranking.csv 
 	--model-dir model
-
+```
 ---
 
 ## To run end to end
-
+```bash
 streamlit run app.py
-
+```
