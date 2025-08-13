@@ -1,0 +1,7 @@
+test_data = ../test_data
+simulated_data = ../output_data
+model_path = ../model/iforest_single.pkl
+feature_ranking_csv = feature_ranking.csv
+
+# input features
+features=latency_ms,throughput_mbps,packet_loss_percent,jitter_ms,rtt_ms,call_setup_success_rate,data_session_success_rate,handover_success_rate,call_drop_rate,cpu_utilization_percent,memory_utilization_percent,bandwidth_utilization_percent,disk_utilization_percent

@@ -1,0 +1,13 @@
+feature,importance
+call_setup_success_rate,0.19172117549491027
+latency_ms,0.18959507122613173
+rtt_ms,0.18159793698644025
+data_session_success_rate,0.17494574276892053
+packet_loss_percent,0.1135854308701714
+disk_utilization_percent,0.037974790416617
+bandwidth_utilization_percent,0.03281139514261732
+cpu_utilization_percent,0.031361170299084036
+memory_utilization_percent,0.02595228897773251
+throughput_mbps,0.01067946106575894
+jitter_ms,0.009162733554697568
+handover_success_rate,0.0006128031969183345
