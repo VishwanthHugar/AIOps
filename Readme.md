@@ -44,12 +44,11 @@ It supports:
    │ Visualization      │
    │ (Streamlit/Grafana)│
    └────────────────────┘
-
-
+```
 ---
 
 ## File Structure
-```plaintext
+
 .
 ├── src/app.py                       # Streamlit main application
 ├── src/app2.py                      # Alternative Streamlit app
@@ -77,7 +76,6 @@ It supports:
 ---
 
 ## File Structure
-```plaintext
 
 git clone https://github.com/yourusername/aiops-telecom-kpi.git
 cd aiops-telecom-kpi
@@ -87,7 +85,7 @@ install ollama, llama3.2:1b, prometheus, prometheus client, Grafana
 ---
 
 ## Prometheus configure
-```plaintext
+
 Add the job in the prometheus.yml
   - job_name: 'pushgateway'
     static_configs:
@@ -97,27 +95,23 @@ Add the job in the prometheus.yml
 
 ---
 ## Start the pushgateway
-```plaintext
 
 ./pushgateway --web.listen-address=":9091"
 
 ---
 ## Start the Grafana for visualization realtime
-```plaintext
 
 /usr/sbin/grafana-server --homepath=/usr/share/grafana
 
 
 ---
 ## Start the ollama for RCA
-```plaintext
 
 ollama serve
 
 ---
 
 ## To train the model
-```plaintext
 
 python main.py infer \
     --kpi-csv output_data/run_001/kpis.csv \
@@ -127,7 +121,6 @@ python main.py infer \
 ---
 
 ## To inference
-```plaintext
 
 python  train_inference.py train \
 	--data-dir output_data \
@@ -137,6 +130,6 @@ python  train_inference.py train \
 ---
 
 ## To run end to end
-```plaintext
+
 streamlit run app.py
 
