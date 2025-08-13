@@ -45,10 +45,11 @@ It supports:
    │ (Streamlit/Grafana)│
    └────────────────────┘
 
+```
 ---
 
 ## File Structure
-
+```plaintext
 .
 ├── src/app.py                       # Streamlit main application
 ├── src/app2.py                      # Alternative Streamlit app
