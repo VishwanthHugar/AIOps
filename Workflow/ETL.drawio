@@ -1,0 +1,111 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.1.0">
+  <diagram name="Page-1" id="VLfYcOZHyRh_N3DAxMLx">
+    <mxGraphModel dx="1042" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZykbK3-cG02UFpPQR3vp-1" target="PmS6Pnq_6Vn6x1LBnBDw-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZykbK3-cG02UFpPQR3vp-1" value="Extract from all source" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="250" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" target="ZykbK3-cG02UFpPQR3vp-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="180" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-7" value="S3" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="150" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PmS6Pnq_6Vn6x1LBnBDw-8" target="ZykbK3-cG02UFpPQR3vp-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-8" value="Simulate" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="260" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-13" value="Process Bar" style="swimlane;childLayout=stackLayout;horizontal=1;fillColor=none;horizontalStack=1;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;strokeColor=none;stackBorder=10;stackSpacing=-12;resizable=1;align=center;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="277" y="30" width="296" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-14" value="Extract" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;size=20;" vertex="1" parent="PmS6Pnq_6Vn6x1LBnBDw-13">
+          <mxGeometry x="10" y="33" width="100" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-15" value="Transform" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="PmS6Pnq_6Vn6x1LBnBDw-13">
+          <mxGeometry x="98" y="33" width="100" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-16" value="Load" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="PmS6Pnq_6Vn6x1LBnBDw-13">
+          <mxGeometry x="186" y="33" width="100" height="47" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="PmS6Pnq_6Vn6x1LBnBDw-17" target="ZykbK3-cG02UFpPQR3vp-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-17" value="other input" style="shape=manualInput;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="370" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PmS6Pnq_6Vn6x1LBnBDw-19" target="PmS6Pnq_6Vn6x1LBnBDw-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-19" value="&lt;div&gt;Select features&amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;Handle missing data&lt;/div&gt;&lt;div&gt;&amp;nbsp;Variance Threshold&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp;Anomaly labeling&amp;nbsp;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; (Isolation Forest)&lt;/span&gt;&lt;/div&gt;&lt;div&gt;&amp;nbsp;Feature ranking&amp;nbsp;&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; (RandomForest)&amp;nbsp;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="1">
+          <mxGeometry x="440" y="222.5" width="130" height="135" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-23" value="Save the Ranked Feature to CSV" style="whiteSpace=wrap;html=1;align=center;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="620" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="PmS6Pnq_6Vn6x1LBnBDw-26" target="PmS6Pnq_6Vn6x1LBnBDw-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-26" value="KPIs" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="100" y="720" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="PmS6Pnq_6Vn6x1LBnBDw-27" target="PmS6Pnq_6Vn6x1LBnBDw-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-27" value="Save the Ranked Feature to CSV" style="whiteSpace=wrap;html=1;align=center;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="580" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-36" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PmS6Pnq_6Vn6x1LBnBDw-31" target="PmS6Pnq_6Vn6x1LBnBDw-35">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-31" value="Train Model using Isolation Forest" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PmS6Pnq_6Vn6x1LBnBDw-35" target="PmS6Pnq_6Vn6x1LBnBDw-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-35" value="Save the Model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="425" y="660" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="PmS6Pnq_6Vn6x1LBnBDw-39" target="PmS6Pnq_6Vn6x1LBnBDw-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-39" value="New Kpi Dat" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="781" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-40" value="Load the model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="425" y="781" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-41" value="Save Anomaly data as csv" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="781" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-44" value="Process Bar" style="swimlane;childLayout=stackLayout;horizontal=1;fillColor=none;horizontalStack=1;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;strokeColor=none;stackBorder=10;stackSpacing=-12;resizable=1;align=center;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="162" y="460" width="472" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-45" value="Extract&amp;nbsp;&lt;div&gt;Important&amp;nbsp;&lt;/div&gt;&lt;div&gt;Feature&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="PmS6Pnq_6Vn6x1LBnBDw-44">
+          <mxGeometry x="10" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-46" value="Train&amp;nbsp;&lt;div&gt;Model&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="PmS6Pnq_6Vn6x1LBnBDw-44">
+          <mxGeometry x="98" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-47" value="Inference" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="PmS6Pnq_6Vn6x1LBnBDw-44">
+          <mxGeometry x="186" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-48" value="Anomaly detection" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="PmS6Pnq_6Vn6x1LBnBDw-44">
+          <mxGeometry x="274" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="PmS6Pnq_6Vn6x1LBnBDw-49" value="&amp;nbsp; &amp;nbsp; Visualization" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="PmS6Pnq_6Vn6x1LBnBDw-44">
+          <mxGeometry x="362" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

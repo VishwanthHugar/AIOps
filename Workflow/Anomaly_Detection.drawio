@@ -1,0 +1,82 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36" version="28.1.0">
+  <diagram name="Page-1" id="98ti2PdfQ5dp4T-_A2Ed">
+    <mxGraphModel dx="1042" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZkKdYSrsRftcaBj48019-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZkKdYSrsRftcaBj48019-2" target="ZkKdYSrsRftcaBj48019-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-2" value="KPIs" style="shape=datastore;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="52" y="360" width="60" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZkKdYSrsRftcaBj48019-4" target="ZkKdYSrsRftcaBj48019-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-4" value="Save the Ranked Feature to CSV" style="whiteSpace=wrap;html=1;align=center;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="22" y="220" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZkKdYSrsRftcaBj48019-6" target="ZkKdYSrsRftcaBj48019-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-6" value="Train Model using Isolation Forest" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="212" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ZkKdYSrsRftcaBj48019-8" target="ZkKdYSrsRftcaBj48019-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-8" value="Save the Model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="377" y="300" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZkKdYSrsRftcaBj48019-10" target="ZkKdYSrsRftcaBj48019-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-10" value="New Kpi Dat" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="212" y="421" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZkKdYSrsRftcaBj48019-11" target="ZkKdYSrsRftcaBj48019-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-11" value="Load the model" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="377" y="421" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ZkKdYSrsRftcaBj48019-12" target="ZkKdYSrsRftcaBj48019-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-12" value="Save Anomaly data as csv" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="542" y="421" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-13" value="Process Bar" style="swimlane;childLayout=stackLayout;horizontal=1;fillColor=none;horizontalStack=1;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;strokeColor=none;stackBorder=10;stackSpacing=-12;resizable=1;align=center;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="197" y="100" width="472" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-14" value="Extract&amp;nbsp;&lt;div&gt;Important&amp;nbsp;&lt;/div&gt;&lt;div&gt;Feature&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="ZkKdYSrsRftcaBj48019-13">
+          <mxGeometry x="10" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-15" value="Train&amp;nbsp;&lt;div&gt;Model&lt;/div&gt;" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="ZkKdYSrsRftcaBj48019-13">
+          <mxGeometry x="98" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-16" value="Inference" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="ZkKdYSrsRftcaBj48019-13">
+          <mxGeometry x="186" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-17" value="Anomaly detection" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="ZkKdYSrsRftcaBj48019-13">
+          <mxGeometry x="274" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-18" value="&amp;nbsp; &amp;nbsp; Visualization" style="shape=step;perimeter=stepPerimeter;fixedSize=1;points=[];whiteSpace=wrap;html=1;" vertex="1" parent="ZkKdYSrsRftcaBj48019-13">
+          <mxGeometry x="362" y="33" width="100" height="57" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-20" value="Visualization" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="421" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-33" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ZkKdYSrsRftcaBj48019-30" target="ZkKdYSrsRftcaBj48019-31">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-30" value="Push to Prometheus" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="542" y="570" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ZkKdYSrsRftcaBj48019-31" value="Grafana &lt;br&gt;Dashboard" style="shape=display;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="570" width="100" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
