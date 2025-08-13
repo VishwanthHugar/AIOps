@@ -51,6 +51,7 @@ kiwisolver==1.4.8
 langchain==0.3.27
 langchain-community==0.3.27
 langchain-core==0.3.74
+langchain-ollama==0.3.6
 langchain-text-splitters==0.3.9
 langsmith==0.4.13
 libmambapy @ file:///home/conda/feedstock_root/build_artifacts/mamba-split_1746515836725/work/libmambapy
@@ -62,6 +63,7 @@ multidict==6.6.3
 mypy_extensions==1.1.0
 narwhals==2.0.1
 numpy==1.26.4
+ollama==0.5.3
 openai==1.99.6
 orjson==3.11.1
 packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1745345660/work
