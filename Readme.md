@@ -44,7 +44,7 @@ It supports:
    │ Visualization      │
    │ (Streamlit/Grafana)│
    └────────────────────┘
-```
+
 ---
 
 ## File Structure
@@ -72,7 +72,7 @@ It supports:
 └── output_data/                     # Generated dataset
 
 
-
+```
 ---
 
 ## Setting up project
