@@ -96,10 +96,10 @@ def perform_rca(query, context):
 
     try:
         result = subprocess.run(
-            ["ollama", "run", "llama3.2:1b", prompt], #deepseek-r1:1.5b
+            ["ollama", "run", "llama3.2:1b", prompt],
             capture_output=True,
             text=True,
-            timeout=60,
+            timeout=120,
         )
         if not result.stdout.strip() and result.stderr:
             return f"Ollama error: {result.stderr}"

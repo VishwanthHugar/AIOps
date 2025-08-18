@@ -59,7 +59,7 @@ def perform_rca(query, context):
 
     try:
         result = subprocess.run(
-            ["ollama", "run", "llama3.2:1b", prompt], #llama3.2:1b, deepseek-r1:1.5b
+            ["ollama", "run", "llama3.2:1b", prompt], #llama3.2:1b
             capture_output=True,
             text=True,
             timeout=60,

@@ -9,7 +9,8 @@ import threading
 import queue
 import os
 import csv
-import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 #import sqlite3
 
@@ -549,3 +550,105 @@ if __name__ == "__main__":
         collector.stop_collection()
 
 print("Data Pipeline Collector code is ready!")
+
+
+
+def generate_kpi_data_with_trend_and_anomalies(
+    start_date="2025-07-01",
+    periods=1440,        # 1 day of minute-level data
+    kpis=["call_setup_success_rate", "throughput_mbps", "latency_ms"],
+    anomaly_prob=0.05,   # 5% anomalies
+    seed=42
+):
+    np.random.seed(seed)
+    timestamps = pd.date_range(start=start_date, periods=periods, freq="min")
+    data = pd.DataFrame({"timestamp": timestamps})
+
+    for kpi in kpis:
+        # Base trend: sinusoidal for daily pattern
+        minutes_in_day = 24 * 60
+        daily_trend = 10 * np.sin(2 * np.pi * (timestamps.hour * 60 + timestamps.minute) / minutes_in_day)
+        
+        # Base KPI value with noise
+        data[kpi] = 50 + daily_trend + np.random.normal(0, 3, size=periods)
+
+        # Inject anomalies
+        anomaly_idx = np.random.choice(
+            data.index, size=int(periods * anomaly_prob), replace=False
+        )
+        for idx in anomaly_idx:
+            direction = np.random.choice([-1, 1])
+            magnitude = np.random.uniform(15, 30)  # spike/drop magnitude
+            data.loc[idx, kpi] += direction * magnitude
+
+    return data
+
+# static_analysis_plot.py
+
+def static_analysis(df, time_col=None, output_dir="./plots"):
+    """
+    Perform static analysis and save plots of a DataFrame.
+    
+    Args:
+        df (pd.DataFrame): Input DataFrame.
+        time_col (str, optional): Name of the time column for time series plots.
+        output_dir (str): Directory to save plots.
+    """
+    # Create output directory if it doesn't exist
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    print("===== DataFrame Info =====")
+    print(df.info())
+
+    print("\n===== Summary Statistics =====")
+    print(df.describe())
+
+    print("\n===== Missing Values =====")
+    print(df.isnull().sum())
+
+    print("\n===== Duplicate Rows =====")
+    print(df.duplicated().sum())
+
+    print("\n===== Data Types =====")
+    print(df.dtypes)
+
+    print("\n===== Correlation Matrix =====")
+    corr = df.corr()
+    print(corr)
+
+    # ------------------ PLOTS ------------------
+
+    # 1. Histograms
+    df.hist(figsize=(12, 10), bins=20)
+    plt.suptitle("Histograms of Numeric Columns")
+    plt.savefig(f"{output_dir}/histograms.png")
+    plt.close()
+
+    # 2. Correlation heatmap
+    plt.figure(figsize=(12, 8))
+    sns.heatmap(corr, annot=True, fmt=".2f", cmap="coolwarm")
+    plt.title("Correlation Heatmap")
+    plt.savefig(f"{output_dir}/correlation_heatmap.png")
+    plt.close()
+
+    # 3. Boxplot for outliers
+    plt.figure(figsize=(12, 6))
+    sns.boxplot(data=df)
+    plt.title("Boxplot of All Columns")
+    plt.savefig(f"{output_dir}/boxplot.png")
+    plt.close()
+
+    # 4. Time series plot if time column exists
+    if time_col and time_col in df.columns:
+        df_ts = df.copy()
+        df_ts[time_col] = pd.to_datetime(df_ts[time_col])
+        df_ts.set_index(time_col, inplace=True)
+        df_ts.plot(figsize=(12, 6))
+        plt.title("Time Series Plot of All Columns")
+        plt.xlabel("Time")
+        plt.ylabel("Values")
+        plt.savefig(f"{output_dir}/time_series.png")
+        plt.close()
+
+    print(f"\nAll plots saved in '{output_dir}' folder.")
